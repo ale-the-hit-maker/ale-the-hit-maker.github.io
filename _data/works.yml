@@ -1,0 +1,94 @@
+# Every work shown on the site, in display order.
+#
+# Fields:
+#   title, subtitle, year, context, summary   text shown on the page
+#   details                                    list shown under "What I built"
+#   stack                                      tools, shown as a comma list
+#   repo                                       link to the code (optional)
+#   credit                                     collaborators (optional)
+#   cover                                      generative drawing: co2, voxels, federated, density, hold, air
+#   sticker                                    short fact on a yellow sticker over the print (optional)
+#   image + image_alt                          use a real picture instead of the drawing,
+#                                              e.g. image: assets/img/zephyrus-render.jpg
+
+- title: IncuSense
+  subtitle: Watching the air inside lab incubators
+  year: "2026"
+  context: Final project, Tech Forward course, University of Bologna and CERN IdeaSquare
+  cover: co2
+  sticker: Sensor at 250 °C
+  summary: >-
+    A complete IoT system that reads the CO₂ level inside laboratory incubators
+    and warns the lab when something drifts.
+  details:
+    - Firmware for an ESP32-C3 sensing unit that reads a chemoresistive CO₂ sensor heated to 250 °C and publishes over MQTT.
+    - Spring Boot backend that calibrates readings, raises alerts and detects sensor drift, storing data in TimescaleDB.
+    - Live web dashboard over REST and WebSocket, where each lab sees only its own data. The whole stack runs with Docker Compose.
+    - 4-layer PCB designed in KiCad and checked with LTspice simulations.
+  stack: [C++, ESP32-C3, MQTT, Java, Spring Boot, TimescaleDB, Docker, KiCad]
+  repo: https://github.com/ale-the-hit-maker/inCo2bate
+
+- title: Point clouds into cubes
+  subtitle: Real-time LiDAR voxelization on the GPU
+  year: "2025–26"
+  context: Accelerated Computing Systems course, University of Bologna
+  credit: Made with Alessandro Marcellini
+  cover: voxels
+  sticker: Semantic KITTI
+  summary: >-
+    Turning streams of LiDAR point clouds into 3D voxel grids fast enough to
+    render live, and measuring what each optimization actually buys.
+  details:
+    - CPU baseline, then a naive CUDA version, then versions with 3 CUDA streams and a pool of streams to overlap copies and compute.
+    - Tested on the SemanticKITTI driving dataset and on generated data, with OpenGL rendering of the voxels.
+  stack: [C++, CUDA, OpenGL]
+  repo: https://github.com/alessandromarcellini/cuda_voxelization
+
+- title: The model goes to the data
+  subtitle: Federated learning for ICU length-of-stay prediction
+  year: "2025"
+  context: Bachelor's thesis, University of Bologna
+  cover: federated
+  sticker: 10 clients
+  summary: >-
+    Hospitals can't share patient data, so the model travels instead and only
+    the weights come back. I studied how well that works and built the clinical
+    data pipeline around it.
+  details:
+    - Federated Averaging written from scratch in TensorFlow with 10 clients. On MNIST, accuracy went from 95.9% with evenly spread data to 93.2% and 86.2% when each client saw only 5 or 2 classes.
+    - ETL of the MIMIC-IV clinical database into the OMOP CDM standard on PostgreSQL, with the patient cohort defined in OHDSI ATLAS.
+    - LSTM in Keras that predicts how long a patient will stay in intensive care, with the input tensor built on disk because it did not fit in RAM.
+  stack: [Python, TensorFlow, Keras, PostgreSQL, OMOP CDM]
+  repo: https://github.com/ale-the-hit-maker/federated_learning
+
+- title: Small and many
+  subtitle: Serverless WebAssembly against containers on Kubernetes
+  year: "2026"
+  context: University project on SpinKube
+  cover: density
+  sticker: Wasm vs containers
+  summary: >-
+    Does WebAssembly really start faster and pack denser than containers? A
+    reproducible benchmark that builds the same HTTP API twice to find out.
+  details:
+    - Same Go service built as a Spin WebAssembly app and as a container, with identical CPU and memory limits.
+    - Scripts that measure cold start, artifact size and pods per node, plus a k6 load test for throughput and tail latency.
+    - Scale-to-zero demo with KEDA, from source code to an autoscaled service.
+  stack: [Kubernetes, WebAssembly, Spin, Go, KEDA, k6]
+  repo: https://github.com/ale-the-hit-maker/spinkube
+
+- title: CargoService
+  subtitle: A robot that loads containers into a ship's hold
+  year: "2026"
+  context: Software Systems Engineering lab, University of Bologna
+  credit: Made with Alessandro Marcellini
+  cover: hold
+  sticker: 3 sprints
+  summary: >-
+    A service that drives a robot loading containers into a cargo hold, taken
+    from the client's requirements to a running system in three sprints.
+  details:
+    - Actor-based architecture modelled with the QAK language, with tests at every sprint.
+    - Raspberry Pi Pico W that detects containers at the input port with a sonar and reports over MQTT.
+  stack: [Kotlin, Java, QAK, MQTT, MicroPython, Docker]
+  repo: https://github.com/alessandromarcellini/CargoService

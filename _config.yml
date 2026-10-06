@@ -1,1 +1,16 @@
+# Site settings. Edit these, then the page updates on its own.
+title: Alessandro Villani
+description: >-
+  Computer engineering student at UniBo and TU/e.
+  Projects in embedded systems, drones and AI.
+
+name: Alessandro Villani
+email: alevil029@gmail.com
+github_username: ale-the-hit-maker
+# Paste your LinkedIn profile URL here to show the link on the page
+linkedin_url: "https://www.linkedin.com/public-profile/settings/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact_info%3B2HbqVmDsSFqYQuOgEW0t1w%3D%3D"
+
 theme: jekyll-theme-midnight
+
+exclude:
+  - README.md

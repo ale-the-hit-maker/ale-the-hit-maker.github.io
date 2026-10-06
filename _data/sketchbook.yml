@@ -1,0 +1,13 @@
+# Your visual work: renders, posters, illustrations, photos, sketches.
+# The "Sketchbook" section appears on the site as soon as this list has at least one item.
+#
+# 1. Put the image in assets/img/ (JPG or PNG, about 1600 px wide is plenty).
+# 2. Remove the "#" in front of a block below and fill it in.
+#
+# - image: assets/img/zephyrus-render.jpg
+#   alt: Render of the Zephyrus docking platform with a drone landing on it
+#   caption: Zephyrus docking platform, Fusion 360 render, 2026
+#
+# - image: assets/img/poster.png
+#   alt: Poster I designed for ...
+#   caption: Poster, Illustrator, 2025
